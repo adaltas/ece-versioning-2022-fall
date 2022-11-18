@@ -1,118 +1,132 @@
----
-note: >-
-  david: I don't have the time to translate into english
----
 
-# Git introduction
+# Lab
+
+This lab work covers the basics of Git.
+
+## Objectives
+
+This lab work can be done in a group of **2 students**.
+
+1. Perform the GitHub Desktop Tutorial
+2. Create a repository and clone it on your computer
+3. Create a branch and navigate between branches
+4. Modify a file in the repository and push the modifications
+5. Manage conflicts
+6. Redo the lab using command line interface (CLI)
 
 ## Before starting
 
 1. Create a GitHub account: https://github.com/
-2. Install an IDE if you don't already have one such as [Sublime text](https://www.sublimetext.com/3) or [Visual Studio Code](https://code.visualstudio.com)
+2. Install GitHub Desktop from this url: https://desktop.github.com/
+3. Install an IDE or a text editor (ex: https://code.visualstudio.com/ or https://atom.io/)
 
-## Objectives
+## 1. Perform the GitHub Desktop Tutorial
 
-This workshop is executed **in groups of 2-3 people**. At least 2 students must have a machine and a GitHub account.
+1. Launch GitHub Desktop
+2. Start the GitHub Desktop Tutorial by clicking "Create a Tutorial Repository ..." and follow the instructions
 
-1. Faire le tutoriel Github Desktop
-1. Créer un repository et le cloner sur son ordinateur
-1. Créer une branche et naviguer entre les branches
-1. Modifier un fichier du repository et pousser les modifications
-1. Gérer des conflits
+![GitHub Desktop Tutorial](image/github-tutorial.png)
 
-## Tutoriel Github Desktop
+## 2. Create a repository and clone it on your computer
 
-Lancer Github Desktop
-Lancer le tutoriel et suivre les indications
+**A single member** of the group creates a repository:
 
-## Repository creation and clone
+1. Login to [Github.com](https://github.com/)
+2. Navigate to the **"Your repositories"** page
+3. Click on **"New"**
+  - Choose a name
+  - Chose the **"Public"** option
+  - Check the box **"Add a README file"**
+  - Check the box **"Add .gitignore"** with the **"Node"** template
+4. Navigate to the created repository, then to the **Settings → Manage Access** page
+5. Click on **"Invite a collaborator"** and add the other members of your group
 
-Un seul membre du groupe crée un repository :
+**All group members** clone the repository:
 
-1. Se connecter à [Github.com](https://github.com)
-1. From your home account, navigate to the page **"Your repositories"**
-1. Click on the **"New"** button
-   1. Choose a project name
-   1. Check **"Add a README file"**
-   1. Enable `.gitignore` by selecting any template such as `C++`
-1. From your project page, go to **"Settings > Manage Access"**, click on **"Invite a collaborator"** and add your project's group memebers.
+6. Open GitHub Desktop
+7. Click on **"Clone a repository from the Internet"**
+8. **GitHub.com** → Filter your repositories
+10. Click on “Clone”
 
-**Tous les membres** du groupe clonent le repository :
+You now have a copy of the local repository
 
-1. Open Github Desktop
-1. Click on **"Clone a repository from the Internet"**
-1. Provide the name for your project repository
-1. Click on "Clone"
-1. You know have a local copy of the repository on your machine
+## 3. Create a branch and navigate between branches
 
-## Branch creation
+**A single member** of the group creates the `develop` branch:
 
-**Un membre** du groupe crée une branche, for example `feat/awesome-feature` :
+1. In GitHub Desktop: **Current branch → New branch**
 
-1. Dans Github Desktop : **Current branch > New branch**
-   ![Branch creation](lab/branch-creation.png)
-1. Choose a branch name, eg `feat/awesome-feature`
-1. Click on the **"Create branche"** button
+![Create a branch](image/branch.png)
 
-Vous pouvez maintenant naviguer (= checkout) entre les branches `main` et `feat/awesome-feature`.
+2. Choose the name of the branch (`develop`) and **"Create branch"**
 
-## Pousser des modifications et récupérer les changements des collaborateurs
+You can now navigate (= checkout) between the master and develop branches.
 
-**Un membre** du groupe modifie le fichier `README.md` et pousse la branche `feat/awesome-feature` :
+## 4. Modify a file in the repository and push the modifications
 
-1. Modifier le fichier README.md entièrement :
-   1. Ouvrir le repository votre IDE
-   1. Remplacer tout le contenu du fichier README.md
-1. Dans Github Desktop :
-   1. Choisissez un message de commit ("Summary")
-   1. "Commit to feat/awesome-feature"
-   1. Utiliser **"Publish branch"** pour pousser vos changements
-   1. Créez **"Pull request"**
+**A single member** of the group modifies the **"README.md"** file and pushes to the `develop` branch:
 
-**Les autres membres** du groupe récupèrent les changements :
+1. Modify the **"README.md"** file entirely:
+  - Open the repository in your IDE
+  - Replace the entire contents of the **"README.md"** file
+2. In GitHub Desktop:
+  - Choose a commit message ("Summary")
+  - Click on **"Commit to develop"**
+  - Use **"Publish branch"** to push your changes to the remote repository
+  
+**The other members** of the group get the changes:
 
-1. Utiliser **"Fetch origin"** pour synchroniser votre repository local avec les changements distants
-1. Naviguer vers la branche `feat/awesome-feature` et observer vos fichiers changer dans votre IDE
+3. Use **"Fetch origin"** to synchronize your local repository with remote changes
+4. Navigate to the develop branch and watch your files change in your IDE
 
-## Conflict handling
+## 5. Manage conflicts
 
-Un conflit arrive lorsqu’une partie d’un fichier a été modifiée sur 2 branches qui doivent fusionner (merge). Nous allons créer un conflit pour voir comment le résoudre.
+A conflict occurs when a part of a file has been modified on 2 branches which must be merged (**merge**). We will create a conflict to see how to resolve it.
 
-**2 membres** du groupe crée chacun une branche à partir de `feat/awesome-feature` et modifier la même partie (mêmes lignes) du fichier README.md :
+Both **2 members** of the group create a branch from `develop` and modify the same part (same lines) of the **README.md** file:
 
-1. Créer une branche dev-prenom "based on... feat/awesome-feature"
-1. Modifier le fichier README.md
-1. Commiter les changements
-1. Pousser ses changements
+1. Create a branch `dev-firstname` **"based on ... develop"**
+2. Edit the **README.md** file
+3. Commit changes
+4. Push your changes
 
-**Tour à tour**, chaque membre merge sa branche sur `feat/awesome-feature`:
+Alternately, each member merges the new branches into `develop`:
 
-1. Checkout sur la branche `feat/awesome-feature`
-1. Cliquer sur **"Choose a branche to merge into feat/awesome-feature"**
-1. Sélectionner la branche
-1. Pousser vos modifications 
-1. Le 2ème membre du groupe va rencontrer un conflit :
-   1. Ouvrir votre IDE comme vous le propose Github Desktop
-   1. Le conflit se matérialisent comme suit :
-      ![Conflict handling](lab/conflict-visualization.png)
-   1. Pour résoudre le conflit, conserver soit la partie HEAD, soit la partie dev-prenom et supprimer les autres lignes (y compris les lignes "====" et ">>>>")
-   1. Une fois les lignes supprimées vous pouvez commiter le merge depuis Github Desktop
-      ![Conflict resolution](lab/conflict-resolution.png)
+5. Checkout the `develop` branch
+6. Click on **"Merge into current branch ..."**
+7. Select branch
+8. Push your changes
+9. **The 2nd member** of the group will encounter a conflict:
+  - Open your IDE as suggested by GitHub Desktop
+  - The conflict materialize as follows:
+  
+  ![Merge conflict](image/merge.png)
 
-## Refaire le TP en ligne de commande
+  - To resolve the conflict, keep either the `HEAD` part, or the `dev-firstname` part and delete the other lines (including the `====` and `>>>>` lines)
+  - Once the lines are deleted you can commit the merge from GitHub Desktop:
 
-Le but est de refaire les mêmes actions que précédemment en ligne de commande.
-Pour cela il faut avoir un terminal et GIT installé par défaut sur Linux ou MacOS. 
+  ![Resolve conflict](image/resolve-conflict.png)
 
-Pour l’installation :
+## 6. Redo the lab using command line interface (CLI)
 
-- Windows : https://gitforwindows.org/
-- Linux : https://git-scm.com/download/linux
-- MacOS : https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git
+The goal is to redo the same actions as before with the command line.
+For this you must have a terminal and GIT installed by default on Linux or MacOS.
 
-Vous pouvez à présent ouvrir le terminal (sur Linux ou MacOS) ou Git for Windows (sur Windows).
+For the installation:
+- Windows: https://gitforwindows.org/
+- Linux: https://git-scm.com/download/linux
+- MacOS: https://git-scm.com/download/mac
 
-Vous pouvez trouver une liste détaillée des différentes commandes GIT en ligne de commande : 
+You can now open Terminal (on Linux or MacOS) or Git Bash (on Windows).
 
+You can find a detailed list of the different Git CLI commands:
 - https://gist.github.com/aquelito/8596717
-- https://github.github.com/training-kit/downloads/fr/github-git-cheat-sheet.pdf
+- https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf
+
+## Bonus tasks
+
+1. [Learn `.gitignore`](https://git-scm.com/docs/gitignore)
+2. [Learn tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
+3. [Learn "rebase" vs "merge"](https://medium.datadriveninvestor.com/git-rebase-vs-merge-cc5199edd77c)
+4. [Learn Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/)
+5. [Learn squashing commits](https://medium.com/the-mighty-programmer/squashing-git-commits-4b53fe1c138e)

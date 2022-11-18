@@ -1,127 +1,251 @@
 ---
-duration: 2.5 hours
+duration: 3 hours
 ---
 
-# Git basics
+# Versioning with Git
 
-## Plan
+![Versioning](image/git-logo.png)
 
-* What is versioning
+## Objectives
 
-* Git introduction
+Today, we will do:
 
-* Lab: practicing Git
+- Learn what is versioning
+- Git introduction
+- Lab: Git basics
 
-# What is versioning?
+## What is versioning?
 
-* Versioning is the **practice** of tracking and managing changes to software code
+Also known as:
 
-* SCM (or VCS) are the tools to achieve it
+- Version Control or Version Control System (VCS)
+- Source Control Management (SCM)
 
-# What can be versioned?
+## What is versioning?
 
-* Code (or any text-based documents)
-* Project versions:
-  * Global project version ( tags: 1.2.4-beta )
-  * Each modification is a «version»
-* Change requests
+**It is the practice of tracking and managing changes to software code.**
 
-# Semantic Versioning (tag names)
+**Version Control System (VCS)** (or **Source Control Management (SCM)**) - tools that help you keep track of your code with a complete history of changes.
 
-![SemVer](images/semver.png)
+It is now a standard in software development to maintain a **single source of truth** for development teams, which allows multiple developers to work on the same codebase.
 
-* MAJOR - when incompatible API changes
-* MINOR - when new functionality
-* PATCH - when bug fixes
-* LABEL - optional, for pre-releases
+## Why VCS?
 
-# Evolution of versioning
+- How to share the work?
+- How to keep track of changes and their authors?
 
-* Centralized
-  * Needs network
-  * Single Point of Failure (SPOF)
-* Decentralized
-  * Network failure doesn't stop work
-  * No SPOF
+## What do you manage with VCS?
 
-# Why learn git?
+- Source code, or any **text-based** documents
+- Project versions
+  - Global project version (**tags**, like `1.2.4-beta`)
+  - Each modification is a version!
+- Change requests ("Pull requests" in GitHub)
 
-* The most popular VCS
-* Decentralized
-* Open Source and free
-* Created in 2005 by Linus Torvalds
+## Semantic Versioning (SemVer)
 
-# What is git?
+![SemVer](image/semver.png)
 
-* Is a set of versioned files with the  entire history of changes
-* Copied to a local folder “.git” folder at the root of a project
-* The users choose the files to version
+Format: `MAJOR.MINOR.PATCH-LABEL`
 
-# Local vs. remote git repository
+- `MAJOR` - when you make incompatible API changes
+- `MINOR` - when you add functionality in a backward-compatible manner
+- `PATCH` - when you make backward-compatible bug fixes
+- `LABEL` - optional, for pre-release and build metadata (extension to the MAJOR.MINOR.PATCH format)
 
-![Git architecture](images/git-architecture.png)
+Examples:
 
-# Git flow
+```
+2.3.1
+1.0.0-alpha
+1.0.0-beta
+```
 
-1. Checking out remote changes
-   `git clone` or `git pull`
-2. Editing a file
-   eg: add a new function “attack()” to the “player.js” file
-3. Adding a file to “staging area” for the next commit
-   `git add player.js`
-4. Commit the modification to the local repository:
-   `git commit -m "Add player attack"`
-5. Send local modifications to the **remote** repository
-   `git push`
-6. Resolution of any conflicts:
-   Code modification + commit
+[Read more about SemVer](https://semver.org/)
 
-# Git states
+## What types of VCS?
 
-* **Untracked** - new file not yet tracked by git
-* **Unchanged** - unchanged since previous commit
-* **Changed** - changed since the last commit
-* **Staged** - changes selcted for next commit
-* **Committed** - changes committed to git history
+- Centralized
+- Distributed
 
-# Conflicts & conflict resolution
+## Centralized VCS
 
-Conflicts happen when multiple users modify the same line.
+![Centralized](image/centralized.png)
 
-Resolved manually:
+- Has a single central database (repository)
+- Single point of failure
+- Requires a network to inspect a history
+  
+Examples: Apache Subversion (SVN)
 
-* edit files with a resolver tool (or text editor)
-* commit the files
-* push to the **remote branch**
+## Distributed VCS
 
-# Branches
+![Distributed](image/distributed.png)
 
-*1 branch = 1 separate versioning space -> isolation of changes*
+- Local database (repository) with the full history
+- Independent work
 
-![Git branch](images/git_branch.png)
+Examples: Git, Mercurial SCM
 
-# Managing a git repository
+## What is Git?
 
-**Git commands**
+- The most popular VCS
+- Distributed
+- Open Source and free
+- Created in 2005 by Linus Torvalds
 
-* `git add`, `git commit`, `git push`, `git pull` , `git merge` ...
-* Through a graphical interface: GitHub Desktop, Fork, GitKraken...
+## Why learn Git?
 
-**Git remote repositories**
+- Git outclasses other SCM tools
+- Git is obligatory to be mastered for everyone involved in software development processes
 
-* GitHub, GitLab, self-hosted...
+![Git outclasses other SCM tools](image/vcs-popularity.png)
 
-**Ignoring files**
+The information is from ["State of software development in 2019", codingsans.com](https://codingsans.com/state-of-software-development-2019).
 
-* The “.gitignore” file contains the files to ignore
-* Works with wildcards
-* .* : ignore all files starting with a “.”
-* Useful for ignoring files specific to your environment:
-* codeblocks or VScode files
+## Git: Ecosystem
 
-# Go further
+- Client tools:
+  - `git` CLI (command-line interface)
+  - GitHub Desktop
+  - GitKraken
+  - Sourcetree
+  - Fork
+  - etc...
+- Repository hosting services:
+  - GitHub
+  - GitLab
+  - Bitbucket
+  - etc...
 
-* Learn the difference between **merge and rebase**
-  * https://dzone.com/articles/merging-vs-rebasing
-* Learn **Conventional Commits** - a specification for writing commit messages
-  * https://www.conventionalcommits.org/en/v1.0.0-beta.2/
+## Git: Basic concepts
+
+- The Git project:
+  - on your computer - **local repository**
+  - in a remote location - **remote repository**
+- Each set of changes to files in the history is a **commit**
+- When choosing what to commit, files are **staged**
+- Each commit has a **parent commit** (except for the first one)
+- The current commit is the **HEAD**
+- Retrieving commits from the remote repository is **pulling**
+- Sending commits to the remote repository is **pushing**
+
+[Official Git documentation](https://git-scm.com/doc)
+
+## Git: Repository
+
+- It is the `.git/` folder inside a project
+- It tracks all changes made to files in your project
+- It stores the entire history of changes
+- Can be **local** and **remote**
+
+> Note! If you delete the `.git/` folder, then you delete your project’s history.
+
+## Git: Common usage scenario
+
+1. Checking out remote changes:   
+  `git clone` (very first time) or `git pull` (always afterward)
+2. Editing a file:   
+  E.g.: add a new function `attack()` to the `player.js` file
+3. Adding a file to "staging area" for the next **commit**:   
+  `git add player.js`
+4. Commit the modification to the **local repository**:   
+  `git commit -m "Add player attack"`
+5. Send local modifications to the **remote repository**:   
+  `git push`
+6. Resolution of any **conflicts**:   
+  File modification and commiting again (starting from step 3)
+
+> Note! If you start a project from scratch you do `git init` to create a new repository
+
+## Git: Branching
+
+- **Branch** is an independent set of commits
+- What makes Git so popular (it fits best to Agile and DevOps)
+- Branch can be an abstraction for a line of development:
+  - `master` (or `main`) is the first and default one, used to keep the stable and tested version of the project
+  - `develop` is the place where features come together before merging to `master`
+  - `feature_X` is a branch for a single feature "X"
+- Branch can be temporary:
+  - To have a change request
+  - To develop an independent feature
+    
+![Git branches](image/git_branch.png)
+
+## Git: Merging branches
+
+- The branches are **merged** to have all the changes in only one branch (eventually in `master`)
+- When changes conflict with each other, the merge fails:   
+  ```
+  Automatic merge failed; fix conflicts and then commit the result.
+  ```
+
+![Merging branches](image/merging-branches.png)
+
+## Git: Resolving conflicts
+
+- **Conflicts** are changes made on the same part of the same file in two branches
+- Must be resolved manually:
+  - edit files with a resolver tool (or text editor)
+  - commit the files
+  - push to the **remote branch**
+
+## Now, it is a time for the lab work!
+
+Pause reading here, do the [lab work](./lab.md), and come back later!
+
+## Git: `.gitignore`
+
+- The `.gitignore` file contains the files to be ignored by Git
+- Works with [wildcards](https://en.wikipedia.org/wiki/Wildcard_character)   
+  Eg: `.*` - ignore all files starting with a `.`
+- Useful for ignoring files specific to your local development environment: 
+  - Codeblocks or VScode configuration files
+  - `./node_modules` folder in Node.js
+
+## Git: Tagging
+
+So far:
+
+- changes are managed, but not the project
+- all the commits come one after the other
+- the only version available is the commit ID
+
+**Tagging** versions:
+
+- Tag a **commit** to be a particular software version
+- It is easier to identify the versions
+- You must **push** tags to the remote repository in the same way as commits
+
+## Git best practices: use rebase instead of merge
+
+![Merge vs Rebase](image/merge-vs-rebase.png)
+
+[Read this article](https://medium.com/datadriveninvestor/git-rebase-vs-merge-cc5199edd77c).
+
+## Git best practices: Conventional Commits
+
+- It is a specification for writing commit messages
+- The commit message should be structured as follows:
+  ```
+  <type>[optional scope]: <description>
+
+  [optional body]
+
+  [optional footer]
+  ```
+- Learn more [here](https://www.conventionalcommits.org/en/v1.0.0-beta.2/)
+
+## Where can you use Git?
+
+- Software development
+- Writing (books, articles, theses)
+- Whatever requires tracking the history...
+
+## Open-source project management
+
+How to contribute to an open-source project on GitHub?
+
+1. **Fork** a repository to your account
+2. Work on a change on your fork
+3. Ask for your changes to be added to the original repository by creating a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
