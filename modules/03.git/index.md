@@ -86,7 +86,7 @@ duration: 2.5 hours
 
 # Conflicts & conflict resolution
 
-Conflicts happen when multiple users modyify the same line.
+Conflicts happen when multiple users modify the same line.
 
 Resolved manually:
 
